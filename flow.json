@@ -1,0 +1,113 @@
+[
+    {
+        "id": "627a5466102a9750",
+        "type": "tab",
+        "label": "Transmit_Sample",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9409ba2cb231ee15",
+        "type": "ncd-gateway-node",
+        "z": "627a5466102a9750",
+        "name": "",
+        "connection": "b7386269.656eb",
+        "unknown_devices": true,
+        "outputs": 2,
+        "x": 1010,
+        "y": 560,
+        "wires": [
+            [
+                "07d595228ad6c882"
+            ],
+            [
+                "185eb9e54bc114bf"
+            ]
+        ]
+    },
+    {
+        "id": "185eb9e54bc114bf",
+        "type": "debug",
+        "z": "627a5466102a9750",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "07d595228ad6c882",
+        "type": "debug",
+        "z": "627a5466102a9750",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "02f147a94db13186",
+        "type": "function",
+        "z": "627a5466102a9750",
+        "name": "",
+        "func": "msg.payload = {};\nmsg.payload.data = [0xF8,0x99,0x00,0x00,0x28];\nmsg.payload.address = \"00:13:a2:00:41:b1:72:47\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 560,
+        "wires": [
+            [
+                "9409ba2cb231ee15"
+            ]
+        ]
+    },
+    {
+        "id": "88aa74a1f484bee1",
+        "type": "inject",
+        "z": "627a5466102a9750",
+        "name": "Trigger",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 630,
+        "y": 560,
+        "wires": [
+            [
+                "02f147a94db13186"
+            ]
+        ]
+    },
+    {
+        "id": "b7386269.656eb",
+        "type": "ncd-gateway-config",
+        "name": "Module",
+        "comm_type": "serial",
+        "ip_address": "",
+        "tcp_port": "2101",
+        "port": "/dev/ttyS1",
+        "baudRate": "115200",
+        "pan_id": "7FFF",
+        "rssi": true
+    }
+]
